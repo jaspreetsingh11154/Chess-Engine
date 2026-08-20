@@ -1,0 +1,7 @@
+# Visula Studio user files
+.vs/
+*.suo
+*.user
+x64/
+Debug/
+Release/
