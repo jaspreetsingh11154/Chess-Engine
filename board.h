@@ -1,5 +1,5 @@
 #pragma once
-#include "Move.h"
+#include "move.h"
 #include "utils.h"
 #include "stack_vector.h"
 /*
@@ -43,11 +43,11 @@ struct UndoState {
 //
 using UndoHistory = StackVector<UndoState, 256>;
 
-class chess_board {
+class Board {
 private:
 	//borad
-	pieces position_board[120];
-	colours side_to_move;
+	Pieces position_board[120];
+	Colours side_to_move;
 	UndoHistory history_stack;
 	int black_king_square;
 	int white_king_square;
@@ -57,9 +57,9 @@ private:
 
 public:
 	//inline function 
-	colours get_side_to_move() const { return side_to_move; }
-	pieces get_piece(int index) const { return position_board[index]; }
-	int get_king_square(colours colour) const { return colour == colours::WHITE ? white_king_square : black_king_square ; }
+	Colours get_side_to_move() const { return side_to_move; }
+	Pieces get_piece(int index) const { return position_board[index]; }
+	int get_king_square(Colours colour) const { return colour == Colours::WHITE ? white_king_square : black_king_square ; }
 	int get_en_passant_square() const { return this->en_passant_square; }
 	uint8_t get_castling_rights() const { return castling_rights; }
 	int get_halfmove_clock() const { return this->halfmove_clock; }
@@ -83,10 +83,10 @@ public:
 			return 15;
 		}
 	}
-	chess_board();//constructor
+	Board();//constructor
 	void print_board()const;
 	void reset_board();
-	void Make_move(const Move& move);
+	void make_move(const Move& move);
 	void unmake_move(const Move& move);
 
 	//

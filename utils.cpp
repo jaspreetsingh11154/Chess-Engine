@@ -1,6 +1,6 @@
 #include "utils.h"
 #include "board.h"
-#include "MoveGen.h"
+#include "move_gen.h"
 
 std::string square_to_notation(int square) {
 	int rank = square / 10;
@@ -45,7 +45,7 @@ int notation_to_square(const std:: string notation) {
 	return square;
 }
 
-Move uci_to_move(std::string str, chess_board &board) {
+Move uci_to_move(std::string str, Board &board) {
 	if (str.length() < 4) return Move{};
 
 	char promotion_char = '\0';
@@ -69,25 +69,25 @@ Move uci_to_move(std::string str, chess_board &board) {
 	return Move{};
 }
 
-char piece_to_notation(pieces piece) {
+char piece_to_notation(Pieces piece) {
 	const char array_lookup[] = { '.','P','N','B','R','Q','K','p','n','b','r','q','k','x' };
 	return array_lookup[int(piece)];
 }
 
-pieces notation_to_piece(char c) {
+Pieces notation_to_piece(char c) {
 	switch (c) {
-				case 'P': return pieces::W_PAWN; 
-				case 'R': return pieces::W_ROOK; 
-				case 'B': return pieces::W_BISHOP; 
-				case 'N': return pieces::W_KNIGHT; 
-				case 'K': return pieces::W_KING; 
-				case 'Q': return pieces::W_QUEEN; 
-				case 'p': return pieces::B_PAWN; 
-				case 'r': return pieces::B_ROOK; 
-				case 'b': return pieces::B_BISHOP; 
-				case 'n': return pieces::B_KNIGHT; 
-				case 'q': return pieces::B_QUEEN; ;
-				case 'k': return pieces::B_KING; 
-				default: return pieces::EMPTY;
+				case 'P': return Pieces::W_PAWN; 
+				case 'R': return Pieces::W_ROOK; 
+				case 'B': return Pieces::W_BISHOP; 
+				case 'N': return Pieces::W_KNIGHT; 
+				case 'K': return Pieces::W_KING; 
+				case 'Q': return Pieces::W_QUEEN; 
+				case 'p': return Pieces::B_PAWN; 
+				case 'r': return Pieces::B_ROOK; 
+				case 'b': return Pieces::B_BISHOP; 
+				case 'n': return Pieces::B_KNIGHT; 
+				case 'q': return Pieces::B_QUEEN; ;
+				case 'k': return Pieces::B_KING; 
+				default: return Pieces::EMPTY;
 	}
 }

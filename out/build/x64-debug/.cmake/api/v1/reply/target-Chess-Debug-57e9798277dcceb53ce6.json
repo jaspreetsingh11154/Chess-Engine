@@ -132,7 +132,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Chess_main.cpp",
+			"path" : "main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -154,17 +154,17 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "MoveGen.cpp",
+			"path" : "move_gen.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "MoveGen.h",
+			"path" : "move_gen.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Move.h",
+			"path" : "move.h",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -201,13 +201,13 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Evaluation.h",
+			"path" : "evaluation.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Evaluation.cpp",
+			"path" : "evaluation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

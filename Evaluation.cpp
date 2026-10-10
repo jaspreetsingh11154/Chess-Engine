@@ -2,13 +2,13 @@
 #include <iostream>
 namespace Eval {
 
-int get_evaluation(const chess_board& board) {
+int get_evaluation(const Board& board) {
 	int white_score = 0;
 	int black_score = 0;
 	for (int i = 20; i <= 90; i += 10) {
 		for (int j = 1; j <= 8; j++) {
-			pieces piece = board.get_piece(i+j);
-			if (piece == pieces::OFF_BOARD || piece == pieces::EMPTY) continue;
+			Pieces piece = board.get_piece(i+j);
+			if (piece == Pieces::OFF_BOARD || piece == Pieces::EMPTY) continue;
 			int index = (int)piece - 1;
 			if (index >= 6) {
 				index -= 6;
@@ -23,7 +23,7 @@ int get_evaluation(const chess_board& board) {
 	//std::cout << "\nW_s: " << white_score;
 	//std::cout << "\nb_s: " << black_score << "\n";
 
-	if (board.get_side_to_move() == colours::BLACK)
+	if (board.get_side_to_move() == Colours::BLACK)
 		return (black_score - white_score); 
 	else
 		return (white_score - black_score);

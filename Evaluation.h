@@ -2,7 +2,7 @@
 #include "board.h"
 
 namespace Eval {
-	int get_evaluation(const chess_board& board);
+	int get_evaluation(const Board& board);
 
 	//centipawn
 	constexpr int piece_value[6] = {
@@ -98,27 +98,27 @@ namespace Eval {
 	};
 
 	//inline functions 
-	inline int get_pst_score(pieces piece, int square) {
+	inline int get_pst_score(Pieces piece, int square) {
 		int sq64 = mailbox120_to_64[square];
-		int index = (get_piece_colour(piece) == colours::WHITE) ? sq64 : (sq64 ^ 56);
+		int index = (get_piece_colour(piece) == Colours::WHITE) ? sq64 : (sq64 ^ 56);
 		switch (piece) {
-		case pieces::B_PAWN:
-		case pieces::W_PAWN:
+		case Pieces::B_PAWN:
+		case Pieces::W_PAWN:
 			return PAWN_PST[index];
-		case pieces::B_KNIGHT:
-		case pieces::W_KNIGHT:
+		case Pieces::B_KNIGHT:
+		case Pieces::W_KNIGHT:
 			return KNIGHT_PST[index];
-		case pieces::B_BISHOP:
-		case pieces::W_BISHOP:
+		case Pieces::B_BISHOP:
+		case Pieces::W_BISHOP:
 			return BISHOP_PST[index];
-		case pieces::B_QUEEN:
-		case pieces::W_QUEEN:
+		case Pieces::B_QUEEN:
+		case Pieces::W_QUEEN:
 			return QUEEN_PST[index];
-		case pieces::B_KING:
-		case pieces::W_KING:
+		case Pieces::B_KING:
+		case Pieces::W_KING:
 			return KING_PST[index];
-		case pieces::B_ROOK:
-		case pieces::W_ROOK:
+		case Pieces::B_ROOK:
+		case Pieces::W_ROOK:
 			return ROOK_PST[index];
 		default:
 			return 0;

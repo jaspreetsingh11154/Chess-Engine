@@ -2,7 +2,7 @@
 #include <cstdint>
 
 //forward decelaration
-class chess_board;
+class Board;
 
-uint64_t perft(chess_board& borad, int depth);
-uint64_t perft_divide(chess_board& board, int depth);
+uint64_t perft(Board& borad, int depth);
+uint64_t perft_divide(Board& board, int depth);

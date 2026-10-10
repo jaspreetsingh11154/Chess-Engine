@@ -41,6 +41,8 @@ public:
 		//guard against stack overflow in debug mode
 	#ifndef NDEBUG
 		if (count >= CAPACITY) {
+			//print debug
+			
 			//out of bounds afety check
 			assert(false && "StackVector overflow in emplace_back!");
 		}

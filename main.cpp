@@ -2,23 +2,30 @@
 //
 
 #include <iostream>
-#include "MoveGen.h"
+#include "move_gen.h"
 #include "perft.h"
 #include <sstream>
-#include "Evaluation.h"
+#include "evaluation.h"
 #include "search.h"
 
 int main()
 {
-	chess_board board;
+	Board board;
 	//board.load_fen("r3k2r/pppppppp/8/8/8/8/PPPPPPP1/R3K2R w KQkq - 1 1");
+	//board.load_fen("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 1 1");
+	//board.load_fen("8/5ppp/8/5PPP/8/8/8/8 w - - 0 1");
+	//board.load_fen("8/8/8/2P5/4n2p/6Q1/8/8 B - - 0 1");
+	//board.load_fen("r1bqk2r/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/R1BQK2R w KQkq - 0 1");
 	board.print_board();
 	search::SearchResult result;
 	int node_count = 0;
-	result = search::negamax_search(board, 3, -1000000, 1000000, node_count);
+	std::cout << "\nEval: " << Eval::get_evaluation(board);
+	result = search::search(board, 2, -1000000, 1000000, node_count);
 	std::cout << "\nnode: " << node_count << std::endl;
 	std::cout << move_to_notation(result.best_move) << ": " << result.score;
 	std:: cout << "\nEval: " << Eval::get_evaluation(board);
+	board.print_board();
+
 	return 0;
 
 	std::string command;
@@ -66,7 +73,7 @@ int main()
 						std::string token;
 						while (ss >> token) {
 							Move move = uci_to_move(token, board);
-							if (!move.is_null()) board.Make_move(move);
+							if (!move.is_null()) board.make_move(move);
 						}
 					}
 				}
@@ -87,17 +94,6 @@ int main()
 			std:: cout << std::endl;
 		}
 	}
-	//std::cout << "Hello Chess." << std::endl;
-
-	//random position
-	//board.load_fen("8/3Pp3/8/8/8/8/8/8 w - - 0 1");
-	//std::vector<Move> list;
-	//MoveGen::generate_pseudo_legal_moves(board, list);
-	//for ( Move m : list) {
-	//	std::cout << square_to_notation(m.move_to)<< " ";
-	//}
-	//std::cout << "<-move-TO\n";
-
 
 	return 0;
 }

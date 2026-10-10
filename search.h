@@ -1,6 +1,6 @@
 #pragma once
-#include "MoveGen.h"
-#include "Evaluation.h"
+#include "move_gen.h"
+#include "evaluation.h"
 
 namespace search {
 	struct SearchResult {
@@ -11,5 +11,8 @@ namespace search {
 		SearchResult(int s, Move m) :score(s), best_move(m) {};
 	};
 
-	SearchResult negamax_search(chess_board& board, int depth, int alpha, int beta, int& node_count);
+	MoveList move_ordering(const Board &board, MoveList &list, Move prev_best_move);
+	SearchResult search(Board& board, int depth, int alpha, int beta, int& node_count);
+	SearchResult negamax_search(Board& board, int depth, int alpha, int beta, int& node_count, MoveList list);
+	SearchResult quiescence(Board& board, int alpha, int beta);
 }

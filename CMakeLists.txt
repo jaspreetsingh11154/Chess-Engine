@@ -12,7 +12,7 @@ endif()
 project ("Chess")
 
 # Add source to this project's executable.
-add_executable (Chess "Chess_main.cpp"   "board.h" "board.cpp" "search.h" "MoveGen.cpp" "MoveGen.h" "Move.h" "pieces.h" "perft.h" "perft.cpp" "utils.h" "utils.cpp" "stack_vector.h" "Evaluation.h" "Evaluation.cpp" "search.cpp")
+add_executable (Chess "main.cpp"   "board.h" "board.cpp" "search.h" "move_gen.cpp" "move_gen.h" "move.h" "pieces.h" "perft.h" "perft.cpp" "utils.h" "utils.cpp" "stack_vector.h" "evaluation.h" "evaluation.cpp" "search.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Chess PROPERTY CXX_STANDARD 20)
